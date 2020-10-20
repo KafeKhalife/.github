@@ -1,7 +1,7 @@
 {
     "name": "Khalife Organization Node.js Build",
     "description": "Khalife Organization CI workflow template.",
-    "iconName": "icon",
+    "iconName": "coffee",
     "categories": [
         "Node.js",
         "JavaScript"
