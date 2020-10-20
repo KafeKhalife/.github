@@ -3,7 +3,7 @@
     "description": "CI workflow template to deploy a container to Azure WebApp Services",
     "iconName": "coffee",
     "categories": [
-        "container",
+        "Deployment",
         "Dockerfile",
         "CSS",
         "Javascript",
