@@ -9,7 +9,7 @@ on:
 env:
   AZURE_WEBAPP_NAME: AppWithContainer   # set this to your application's name
   IMG_URL: ghcr.io/KhalifeKebabs/ImageName: # update with application image URL 
-  IMG_VERSION: ${{ github.run_id }} 
+  IMG_VERSION: ${{ github.run_id }} #uses the Action's Run ID as the version
   
 jobs:
   build-and-deploy:
@@ -25,7 +25,7 @@ jobs:
         username: $${{ secrets.CR_USR }}
         password: ${{ secrets.CR_PAT }}
     
-    - name: Docker Build & Push to GHCR
+    - name: Docker Build & Push to GitHub Packages
       run: |
         docker build . -t $IMG_URL:$IMG_VERSION
         docker push $IMG_URL:$IMG_VERSION
