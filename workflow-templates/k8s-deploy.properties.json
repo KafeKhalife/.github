@@ -3,7 +3,8 @@
     "description": "CD workflow template to deploy a container to Azure Kubernetes Service",
     "iconName": "azure",
     "categories": [
-        "Deployment"
+        "Deployment",
+        "Dockerfile"
     ],
     "filePatterns": [
         "^Dockerfile",
