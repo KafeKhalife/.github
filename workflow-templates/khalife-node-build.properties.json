@@ -4,10 +4,12 @@
     "iconName": "coffee",
     "categories": [
         "Node.js",
-        "JavaScript"
+        "JavaScript",
+        "Dockerfile"
     ],
     "filePatterns": [
         "package.json",
-        "index.html"
+        "index.html",
+        "Dockerfile"
     ]
 }
