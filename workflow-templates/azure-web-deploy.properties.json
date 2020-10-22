@@ -1,5 +1,5 @@
 {
-    "name": "Azure WebApp Container Deploy",
+    "name": "Azure WebApp Container Deploy Starter Workflow",
     "description": "CI workflow template to deploy a container to Azure WebApp Services",
     "iconName": "azure",
     "categories": [
