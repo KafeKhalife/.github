@@ -1,0 +1,12 @@
+{
+    "name":  "Java Maven Build Workflow Template",
+    "description": "Khalife Organization CI workflow template for Maven build jobs",
+    "iconName": "coffee",
+    "categories": [
+        "Java",
+        "Maven"
+    ],
+    "filePatterns": [
+        "pom.xml"
+    ]
+}
