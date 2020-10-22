@@ -16,7 +16,9 @@ on:
   
 
 env: 
-    IMG_URL: ghcr.io/kafekhalife/UPDATE-IMAGE-NAME
+    IMG_URL: 'ghcr.io/kafekhalife/Update-Image-Name' # Update with your image url
+    CLUSTER_NAME: 'sk-gh-talk' # Update with your AKS Cluster Name
+    
 
 jobs:
     build:
@@ -40,14 +42,14 @@ jobs:
       - uses: Azure/aks-set-context@v1
         with:
           creds: '${{ secrets.AZURE_K8S_CREDS }}'
-          cluster-name: sk-gh-talk
-          resource-group: k8s-testing
+          cluster-name: '$CLUSTER_NAME
+          resource-group: '${{ secrets.AZURE_RG }}'
           
       - uses: Azure/k8s-create-secret@v1
         with:
           container-registry-url: ghcr.io
-          container-registry-username: ${{ secrets.CR_USR }}
-          container-registry-password: ${{ secrets.CR_PAT }}
+          container-registry-username: '${{ secrets.CR_USR }}'
+          container-registry-password: '${{ secrets.CR_PAT }}'
           secret-name: ghcr-k8s-secret
   
       - uses: Azure/k8s-deploy@v1
