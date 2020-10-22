@@ -1,5 +1,7 @@
 name: Azure WebApp Container Deploy
 
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the default branch
 on:
   push:
     branches: [ $default-branch ]
@@ -7,9 +9,8 @@ on:
     branches: [ $default-branch ]
     
 env:
-  AZURE_WEBAPP_NAME: AppWithContainer   # set this to your application's name
-  IMG_URL: ghcr.io/kafekhalife/UPDATE-IMAGE-NAME: # update with application image URL 
-  IMG_VERSION: ${{ github.run_id }} #uses the Action's Run ID as the version
+  AZURE_WEBAPP_NAME: UpdateAppName   # set this to your application's name
+  IMG_URL: ghcr.io/kafekhalife/Update-Image-Name # update with application image URL 
   
 jobs:
   build-and-deploy:
@@ -19,20 +20,22 @@ jobs:
     - name: 'Checkout Github Action'
       uses: actions/checkout@master
 
+    # login to ghcr with action supplied by Azure
     - uses: azure/docker-login@v1
       with:
         login-server: ghcr.io
         username: $${{ secrets.CR_USR }}
         password: ${{ secrets.CR_PAT }}
     
-    - name: Docker Build & Push to GitHub Packages
+    - name: Docker build & push to GitHub Packages
       run: |
-        docker build . -t $IMG_URL:$IMG_VERSION
-        docker push $IMG_URL:$IMG_VERSION
+        echo IMAGE_NAME=$IMG_URL:${{ github.sha }}
+        docker build . -t $IMG_URL:${{ github.sha }}
+        docker push $IMG_URL:${{ github.sha }}
 
-
+    # Leveraging action supplied by Azure 
     - uses: azure/webapps-deploy@v2
       with:
-        app-name: $AZURE_WEBAPP_NAME
+        app-name: '$AZURE_WEBAPP_NAME'
         publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-        images: $IMG_URL:$IMG_VERSION
+        images: '$IMG_URL:${{ github.sha }}'
