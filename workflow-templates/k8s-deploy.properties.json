@@ -1,6 +1,7 @@
+
 {
-    "name": "AKS Deployment Starter Workflow",
-    "description": "CD workflow template to deploy a container to Azure Kubernetes Service",
+    "name":  "AKS Deployment Starter Workflow",
+    "description": "CD workflow template to deploy a container to Azure Kubernetes Service.",
     "iconName": "azure",
     "categories": [
         "Deployment",
@@ -9,5 +10,7 @@
     "filePatterns": [
         "^Dockerfile",
         ".*\\.md$",
+        "index.html"
     ]
 }
+
