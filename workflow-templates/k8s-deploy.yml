@@ -5,7 +5,7 @@ on:
   push:
     # Trigger job on `main` to deploy image.
     branches:
-      - main
+      - $default-branch
 
     # Publish `v1.2.3` tags as releases.
     tags:
@@ -16,7 +16,7 @@ on:
   
 
 env: 
-    IMG_URL: ghcr.io/kafekhalife/CHANGE-IMAGE-NAME
+    IMG_URL: ghcr.io/kafekhalife/UPDATE-IMAGE-NAME
 
 jobs:
     build:
