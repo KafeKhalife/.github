@@ -1,10 +1,10 @@
-name: Khalife Organization Node.js CI
+name: Kafe Organization Node.js CI
 
 on:
   push:
-    branches: [ test-branch ]
+    branches: [ $default-branch ]
   pull_request:
-    branches: [ test-branch ]
+    branches: [ $default-branch ]
 
 jobs:
   build:
